@@ -1,3 +1,9 @@
+# Ignore environment variables config because of secrets
+.env
+cert.pem
+key.pem
+keytmp.pem
+
 lib-cov
 *.seed
 *.log
