@@ -1,6 +1,6 @@
 # Netlify-cms-github-oauth-provider
 
-***External authentication providers were enabled in netlify-cms version 0.4.3. Check your web console to see your netlify-cms version.***
+**_External authentication providers were enabled in netlify-cms version 0.4.3. Check your web console to see your netlify-cms version._**
 
 [netlify-cms](https://www.netlifycms.org/) has its own github OAuth client. This implementation was created by reverse engineering the results of that client, so it's not necessary to reimplement client part of [netlify-cms](https://www.netlifycms.org/).
 
@@ -39,9 +39,10 @@ GIT_HOSTNAME=https://github.website.com
 PORT=3000
 ```
 
-__NOTE__: ORIGIN is mandatory and can contain regex (e.g. ```.*.my_organisation.com```)
+**NOTE**: ORIGIN is mandatory and can contain regex (e.g. `.*.my_organisation.com`)
 
 For Gitlab you also have to provide this environment variables:
+
 ```ini
 OAUTH_PROVIDER=gitlab
 SCOPES=api
@@ -49,7 +50,8 @@ OAUTH_AUTHORIZE_PATH=/oauth/authorize
 OAUTH_TOKEN_PATH=/oauth/token
 ```
 
-You can also setup an environment variable to configure "_blank" target when auth window is opened. Default is "_self".
+You can also setup an environment variable to configure "\_blank" target when auth window is opened. Default is "\_self".
+
 ```ini
 AUTH_TARGET=_blank
 ```
@@ -67,13 +69,14 @@ This is only necessary for use with Github Enterprise or Gitlab.
 If you do not want to run the app on 3000.
 
 ### CMS Config
+
 You also need to add `base_url` to the backend section of your netlify-cms's config file. `base_url` is the live URL of this repo with no trailing slashes.
 
 ```yaml
 backend:
   name: [github | gitlab]
-  repo: user/repo   # Path to your Github/Gitlab repository
-  branch: master    # Branch to update
+  repo: user/repo # Path to your Github/Gitlab repository
+  branch: master # Branch to update
   base_url: https://your.server.com # Path to ext auth provider
 ```
 
@@ -84,17 +87,25 @@ backend:
 Basic instructions for pushing to heroku are available in the [original blog post](http://www.vxk.cz/tips/2017/05/18/netlify-cms/).
 
 ### Locally
+
 You can run the instance like so:
+
 ```bash
 npm start
 ```
 
+To integrate with GitHub locally, you will need to change the NODE_ENV to
+`development` and configure a certificate and key at `./key.pem` and
+`./cert.pem` (root directory of the app), respectively.
+
 Or with commandline provided variables like so:
+
 ```bash
 PORT=3111 NODE_ENV=production ORIGIN=www.my_organisation.com OAUTH_CLIENT_ID=... OAUTH_CLIENT_SECRET=... npm start
 ```
 
 If running behind reverse-proxy (e.g. nginx), the `/auth` and `/callback` paths need to be proxied, e.g. like so:
+
 ```nginx
  location /auth {
     proxy_pass http://127.0.0.1:3111;
@@ -114,6 +125,7 @@ location /callback {
 ```
 
 You may want to run this as a systemd service like so:
+
 ```bash
 $ cat /etc/systemd/system/oauth-github.service
 ```
@@ -137,3 +149,7 @@ Environment=OAUTH_CLIENT_SECRET=...
 [Install]
 WantedBy=multi-user.target
 ```
+
+### Azure
+
+Deploy an express app to Azure: https://docs.microsoft.com/en-us/azure/developer/javascript/tutorial/deploy-nodejs-azure-app-service-with-visual-studio-code?tabs=bash
