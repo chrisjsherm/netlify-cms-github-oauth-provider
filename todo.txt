@@ -1,1 +1,2 @@
 * Linting
+* Restart server on save (see Hapi server configuration)

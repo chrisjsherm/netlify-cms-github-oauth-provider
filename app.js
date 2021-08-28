@@ -19,7 +19,7 @@ app.get('/', middleWarez.index);
 
 if (isProduction) {
   app.listen(port, () => {
-    console.log("gandalf is walkin' on port " + port);
+    console.log("gandalf is walkin' on HTTP port " + port);
   });
 } else {
   const https = require('https');
@@ -30,6 +30,6 @@ if (isProduction) {
   const server = https.createServer({ key, cert }, app);
 
   server.listen(port, () => {
-    console.log("gandalf is walkin' on port " + port);
+    console.log("gandalf is walkin' on HTTPS port " + port);
   });
 }
