@@ -1,4 +1,6 @@
 const originPattern = process.env.ORIGIN || '';
+
+console.log(`callback.js > Origin: ${originPattern}`);
 if (''.match(originPattern)) {
   console.warn(
     'Insecure ORIGIN pattern used. This can give unauthorized users access to your repository.',
