@@ -17,7 +17,7 @@ Other implementations: https://www.netlifycms.org/docs/external-oauth-clients/
 ## Clone Repository
 
 ```bash
-git clone https://github.com/vencax/netlify-cms-github-oauth-provider
+git clone git@github.com:chrisjsherm/netlify-cms-github-oauth-provider.git
 cd netlify-cms-github-oauth-provider
 npm install
 ```
